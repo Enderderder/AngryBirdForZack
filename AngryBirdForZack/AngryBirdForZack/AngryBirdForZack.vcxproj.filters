@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Engine\AssetMgr.cpp">
+      <Filter>Engine\AssetManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Camera.cpp">
+      <Filter>Engine\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\GameObject.cpp">
+      <Filter>Engine\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Input.cpp">
+      <Filter>Engine\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\MeshComponent.cpp">
+      <Filter>Engine\Component\MeshComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\RigidBody2D.cpp">
+      <Filter>Engine\Component\RigidbodyComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\ShaderLoader.cpp">
+      <Filter>Engine\ShaderLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Component.cpp">
+      <Filter>Engine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Debug.cpp">
+      <Filter>Engine\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\CXBOXController.cpp">
+      <Filter>Engine\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Time.cpp">
+      <Filter>Engine\TextLoader\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\TextLoader.cpp">
+      <Filter>Engine\TextLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\TextLabel.cpp">
+      <Filter>Engine\TextLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Sprite.cpp">
+      <Filter>Engine\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SpriteRender.cpp">
+      <Filter>Engine\Component\SpriteRenderComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Sound.cpp">
+      <Filter>Engine\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SceneMgr.cpp">
+      <Filter>Engine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\SpaceShip.cpp">
+      <Filter>Game\GameClass\SpaceShip</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Scene.cpp">
+      <Filter>Engine\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\RichardTest.cpp">
+      <Filter>Game\Scenes\TestScene</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine\AssetMgr.h">
+      <Filter>Engine\AssetManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Camera.h">
+      <Filter>Engine\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\GameObject.h">
+      <Filter>Engine\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Input.h">
+      <Filter>Engine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\MeshComponent.h">
+      <Filter>Engine\Component\MeshComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\RigidBody2D.h">
+      <Filter>Engine\Component\RigidbodyComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\ShaderLoader.h">
+      <Filter>Engine\ShaderLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Component.h">
+      <Filter>Engine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Debug.h">
+      <Filter>Engine\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Utility.h">
+      <Filter>Ultility</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameClasses.h">
+      <Filter>Ultility</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\CXBOXController.h">
+      <Filter>Engine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Time.h">
+      <Filter>Engine\TextLoader\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\TextLoader.h">
+      <Filter>Engine\TextLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\TextLabel.h">
+      <Filter>Engine\TextLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Sprite.h">
+      <Filter>Engine\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\SpriteRender.h">
+      <Filter>Engine\Component\SpriteRenderComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Sound.h">
+      <Filter>Engine\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\SceneMgr.h">
+      <Filter>Engine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\SpaceShip.h">
+      <Filter>Game\GameClass\SpaceShip</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Scene.h">
+      <Filter>Engine\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\RichardTest.h">
+      <Filter>Game\Scenes\TestScene</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Engine\Shaders\CubeMap.vs">
+      <Filter>Resources\Shaders\CubeMap</Filter>
+    </None>
+    <None Include="Engine\Shaders\CubeMap.fs">
+      <Filter>Resources\Shaders\CubeMap</Filter>
+    </None>
+    <None Include="Engine\Shaders\Text.fs">
+      <Filter>Resources\Shaders\Text</Filter>
+    </None>
+    <None Include="Engine\Shaders\Text.vs">
+      <Filter>Resources\Shaders\Text</Filter>
+    </None>
+    <None Include="Engine\Shaders\Sprite.vs">
+      <Filter>Resources\Shaders\Sprite</Filter>
+    </None>
+    <None Include="Engine\Shaders\Sprite.fs">
+      <Filter>Resources\Shaders\Sprite</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{a6e738a6-0653-417a-a67b-225253469a64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{2e9ff56a-dc21-4bde-a97e-95186cef3387}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{43d894c8-b30f-4283-88b3-b7e0bc053cb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{9128c3bb-9b0b-4524-8e28-6fce731679a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ultility">
+      <UniqueIdentifier>{d42b2b8d-bf19-463b-8983-fa282df36000}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\AssetManager">
+      <UniqueIdentifier>{59845ab7-898d-41ba-8ae3-c9ba17f0dba1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Camera">
+      <UniqueIdentifier>{e6391007-6b1d-4180-bf84-25508931ab2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Component">
+      <UniqueIdentifier>{d25e3188-36c7-4927-a558-9a214d511f6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Debug">
+      <UniqueIdentifier>{f3ce56eb-f26b-481a-80ad-a95e9b9b5382}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\GameObject">
+      <UniqueIdentifier>{5cd2e4be-c8f1-4e3f-a251-688755fc7840}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Input">
+      <UniqueIdentifier>{1b97628a-a296-4931-9ea2-6c09d3651166}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Scene">
+      <UniqueIdentifier>{7cc6f661-c2ed-4c7e-a881-467f18d60823}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Component\MeshComponent">
+      <UniqueIdentifier>{37aac9b0-58a6-4910-9e76-f3345130ed4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Component\RigidbodyComponent">
+      <UniqueIdentifier>{593de612-7b90-4e7f-ac9d-4af781356acc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Component\SpriteRenderComponent">
+      <UniqueIdentifier>{e013a1b4-48bf-4c59-ae81-18c07acdfecb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\ShaderLoader">
+      <UniqueIdentifier>{fe99749a-e34b-4ddd-8a17-4fff3603ceb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Sound">
+      <UniqueIdentifier>{dddad3e2-0ce4-401d-9d68-0570021f7703}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Sprite">
+      <UniqueIdentifier>{6289a794-28e5-45dd-9b85-4b62be68a991}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\TextLoader">
+      <UniqueIdentifier>{a8fa8d15-abb3-4b9a-9b62-a56d8c88216c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Shaders">
+      <UniqueIdentifier>{9a376e9e-d937-4396-befe-7eeb0d31d4fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Shaders\CubeMap">
+      <UniqueIdentifier>{cfecc1bb-8a43-45a3-9293-83324fd8cf34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Shaders\Sprite">
+      <UniqueIdentifier>{4987d791-806d-4626-a464-d45efba14366}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Shaders\Text">
+      <UniqueIdentifier>{5d737bac-01cb-4e5e-a321-8c93b7e18625}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\TextLoader\Time">
+      <UniqueIdentifier>{c1f4ebcf-82bd-4d84-99f6-8a1667964751}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Scenes">
+      <UniqueIdentifier>{18cc5330-cdfb-418a-ac85-322e6e2eb194}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Scenes\TestScene">
+      <UniqueIdentifier>{009bcf14-785a-4ce6-bd03-8f49a7a23d94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameClass">
+      <UniqueIdentifier>{9f390703-2a74-4ddc-87e5-de2c6d9db30a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameClass\SpaceShip">
+      <UniqueIdentifier>{65e62d63-3103-485d-a65a-45118b1ba71a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Engine\Commenting Header.txt">
+      <Filter>Ultility</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
