@@ -3,12 +3,7 @@
 #include "SpaceShip.h"
 
 // Engine Include
-#include "Engine/AssetMgr.h"
-#include "Engine/Component.h"
-#include "Engine/SpriteRender.h"
-#include "Engine/RigidBody2D.h"
-#include "Engine/Input.h"
-#include "Engine/Utility.h"
+#include "Engine/Engine.h"
 
 CSpaceShip::CSpaceShip(int playerID)
 {
@@ -122,14 +117,16 @@ void CSpaceShip::Movement(bool bLeft, bool bRight, bool bUp, bool bDown)
 	b2Body* myBody = Get2DBody()->GetBody();
 	if (myBody)
 	{
-		myBody->SetTransform(myBody->GetPosition(), (m_fCurrentRotation / 180 * b2_pi));
+		myBody->SetUserData(this);
+		//myBody->SetTransform(myBody->GetPosition(), (m_fCurrentRotation / 180 * b2_pi));
+		m_transform.rotation.z = m_fCurrentRotation / 180 * b2_pi;
 		b2Vec2 direction = b2Vec2(0.0f, 1.0f);
 		RotateVecotr(direction, m_fCurrentRotation);
 		direction.Normalize();
 		direction *= (float)up * 2.0f; // 10.0f;
 		myBody->ApplyForceToCenter(direction, true);
-		this->m_transform.position = glm::vec3(myBody->GetPosition().x, myBody->GetPosition().y, 0.0f);
-		this->m_transform.rotation.z = m_fCurrentRotation;
+		//this->m_transform.position = glm::vec3(myBody->GetPosition().x, myBody->GetPosition().y, 0.0f);
+		//this->m_transform.rotation.z = m_fCurrentRotation;
 	}
 	return;
 }

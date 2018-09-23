@@ -5,6 +5,7 @@
 #include "Utility.h"
 
 // Forward Declaration
+class CContactListener;
 class CGameObject;
 class CCamera;
 class CCubeMap;
@@ -33,7 +34,6 @@ public:
 
 	std::vector<CGameObject*> GetObjectVec() const;
 
-
 public:
 
 	std::string m_sceneName;
@@ -48,6 +48,7 @@ protected:
 
 	b2Vec2 m_gravity;
 	b2World* m_box2DWorld;
+	CContactListener* m_contactListener;
 
 private:
 

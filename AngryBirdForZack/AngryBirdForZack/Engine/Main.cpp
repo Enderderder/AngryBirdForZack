@@ -1,16 +1,8 @@
 // Global Include
 #include "Utility.h"
-#include "SceneMgr.h"
-#include "Time.h"
-//#include "SinglePlayerScene.h"
-//#include "MeshMgr.h"
-//#include "ModelMgr.h"
-#include "AssetMgr.h"
-#include "SceneMgr.h"
-//#include "CNetworkMgr.h"
-//#include "network.h"
-#include "Input.h"
-#include "TextLabel.h"
+
+// Engine Include
+#include "Engine.h"
 
 // GLobal Variables
 static CTime* p_Time = CTime::GetInstance();
@@ -32,7 +24,7 @@ int main(int argc, char **argv)
 	glutInitWindowPosition(400, 200);
 
 	glutInitWindowSize(util::SCR_WIDTH, util::SCR_HEIGHT);
-	glutCreateWindow("Velocitas");
+	glutCreateWindow("Angry Bird For Zack");
 	glEnable(GL_MULTISAMPLE);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

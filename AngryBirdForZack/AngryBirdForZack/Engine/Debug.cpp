@@ -1,9 +1,6 @@
 
-// This Include
-#include "Debug.h"
-
 // Engine Include
-#include "GameObject.h"
+#include "Engine.h"
 
 void CDebug::Log(std::string _info)
 {

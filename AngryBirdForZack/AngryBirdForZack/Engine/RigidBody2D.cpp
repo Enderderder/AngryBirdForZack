@@ -1,15 +1,6 @@
 
-// This Include
-#include "RigidBody2D.h"
-
 // Engine Include
-#include "SceneMgr.h"
-#include "Scene.h"
-#include "GameObject.h"
-#include "Debug.h"
-#include "SpriteRender.h"
-#include "Sprite.h"
-
+#include "Engine.h"
 
 CRigiBody2D::CRigiBody2D() :
 	m_bodyType(b2_dynamicBody),
@@ -27,9 +18,27 @@ CRigiBody2D::~CRigiBody2D()
 
 void CRigiBody2D::Update(float _tick)
 {
-	if (m_body)
+	if (m_body) // If the body is created
 	{
-		std::cout << m_body->GetPosition().x << " :: " << m_body->GetPosition().y << std::endl;
+		// Sync the transform of the object with the body right after the Box2D Step
+		GetOwner()->m_transform.position =
+			glm::vec3(m_body->GetPosition().x, m_body->GetPosition().y, m_body->GetAngle());
+	}
+}
+
+void CRigiBody2D::LateUpdate(float _tick)
+{
+	if (m_body) // If the body is created
+	{
+		// Get the obj posistion and rotation
+		glm::vec3 objTransform = GetOwner()->m_transform.position;
+		float objRotation = GetOwner()->m_transform.rotation.z;
+
+		// Convert glmVec3 to b2Vec2
+		b2Vec2 bodyTransform = b2Vec2(objTransform.x, objTransform.y);
+
+		// Set the body to the position and rotation
+		m_body->SetTransform(bodyTransform, objRotation);
 	}
 }
 
@@ -39,22 +48,27 @@ void CRigiBody2D::BeginPlay()
 	//CreateBody(CSceneMgr::GetInstance()->GetRunningScene()->GetWorld(), )
 }
 
+void CRigiBody2D::Awake()
+{
+	CreateBody();
+}
+
 void CRigiBody2D::OnDestroy()
 {
 
 }
 
-b2Body * CRigiBody2D::GetBody()
+b2Body* CRigiBody2D::GetBody()
 {
 	return m_body;
 }
-
 
 void CRigiBody2D::CreateBody()
 {
 	// Define the dynamic body. We set its position and call the body factory.
 	b2BodyDef bodyDef;
 
+	// Set the body type
 	bodyDef.type = m_bodyType;
 
 	// Set the initial transform position to the root current root position
@@ -65,29 +79,32 @@ void CRigiBody2D::CreateBody()
 	m_body = CSceneMgr::GetInstance()->GetRunningScene()->GetWorld()->CreateBody(&bodyDef);
 
 	// Set the transform from the bodyDef to the body
-	m_body->SetTransform(bodyDef.position, (m_transform.direction.z / 180) * b2_pi);
+	m_body->SetTransform ( bodyDef.position, (util::ToRad(rootTransform.rotation.z)) );
 
 	// Set if the body can be rotate or not
 	m_body->SetFixedRotation(!m_bCanRotate);
 
+	// At the end, Set the body component into UserData for collision listening
+	m_body->SetUserData(this);
+
 	/// ====================================================================================
 	// Define another box shape for our dynamic body
-	b2PolygonShape dynamicBox;
+	//b2PolygonShape dynamicBox;
 
-	b2FixtureDef fixtureDef;
+	//b2FixtureDef fixtureDef;
 
 	/// ====================================================================================
 }
 
 void CRigiBody2D::CreateBody(b2World* _world, b2BodyType BodyType, bool bCanRotate, bool bHasFixture, float Density, float Friction, int fixtureType)
 {
-	m_transform.position = glm::vec3(0.0f, 0.0f, 0.0f);
+	//m_transform.position = glm::vec3(0.0f, 0.0f, 0.0f);
 	// Define the dynamic body. We set its position and call the body factory.
 	b2BodyDef bodyDef;
 	bodyDef.type = BodyType;
-	bodyDef.position.Set(m_transform.position.x, m_transform.position.y);
+	//bodyDef.position.Set(m_transform.position.x, m_transform.position.y);
 	m_body = _world->CreateBody(&bodyDef);
-	m_body->SetTransform(bodyDef.position, (m_transform.direction.z / 180) * b2_pi);
+	//m_body->SetTransform(bodyDef.position, (m_transform.direction.z / 180) * b2_pi);
 	m_body->SetFixedRotation(!bCanRotate);
 	// Define another box shape for our dynamic body.
 	b2PolygonShape dynamicBox;
@@ -181,4 +198,3 @@ bool CRigiBody2D::GetHasFixture() const
 {
 	return m_bHasFixture;
 }
-

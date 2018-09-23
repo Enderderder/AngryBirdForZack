@@ -5,3 +5,9 @@
 #pragma once
 
 /** Game Object and Component Class */
+
+// Birds Classes
+#include "RedBird.h"
+
+// Pig Classes
+#include "NormalPig.h"

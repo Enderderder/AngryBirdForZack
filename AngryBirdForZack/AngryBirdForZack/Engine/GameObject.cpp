@@ -1,9 +1,6 @@
-// This Include
-#include "GameObject.h"
 
-// Local Include
-#include "Component.h"
-
+// Engine Include
+#include "Engine.h"
 
 /* Legacy Render Function*/
 // void CGameObject::RenderObject(CCamera* _camera)
@@ -80,6 +77,20 @@ void CGameObject::Update(float _tick)
 		iter->Update(_tick);
 	}
 }
+
+void CGameObject::LateUpdate(float _tick)
+{
+	for (auto iter : m_components)
+	{
+		iter->LateUpdate(_tick);
+	}
+}
+
+void CGameObject::OnCollisionEnter(CGameObject* _other)
+{}
+
+void CGameObject::OnCollisionEnd(CGameObject* _other)
+{}
 
 void CGameObject::DestroyObject()
 {

@@ -1,10 +1,6 @@
 // This Include
 #include "TextLoader.h"
 
-// Local Include
-//#include "AssetMgr.h"
-#include "Utility.h"
-
 Text::Text(std::string font) :
 	color(1.0f, 1.0f, 1.0f),
 	text(""),

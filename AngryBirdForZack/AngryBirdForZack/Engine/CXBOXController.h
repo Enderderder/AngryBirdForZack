@@ -12,6 +12,9 @@
 #include <windows.h>
 #include <XInput.h>
 
+// Include the engine util
+#include "Utility.h"
+
 // Now, the XInput Library
 // NOTE: COMMENT THIS OUT IF YOU ARE NOT USING A COMPILER THAT SUPPORTS THIS METHOD OF LINKING LIBRARIES
 #pragma comment(lib, "XInput.lib")

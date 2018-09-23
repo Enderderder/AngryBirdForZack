@@ -35,7 +35,7 @@
       <Filter>Engine\Input</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Time.cpp">
-      <Filter>Engine\TextLoader\Time</Filter>
+      <Filter>Engine\Time</Filter>
     </ClCompile>
     <ClCompile Include="Engine\TextLoader.cpp">
       <Filter>Engine\TextLoader</Filter>
@@ -63,6 +63,21 @@
     </ClCompile>
     <ClCompile Include="Game\RichardTest.cpp">
       <Filter>Game\Scenes\TestScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Bird.cpp">
+      <Filter>Game\GameClass\Bird</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\ContactListener.cpp">
+      <Filter>Engine\Box2D_Extend</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\RedBird.cpp">
+      <Filter>Game\GameClass\Bird\RedBird</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Pig.cpp">
+      <Filter>Game\GameClass\Pig</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\NormalPig.cpp">
+      <Filter>Game\GameClass\Pig\NormalPig</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -103,7 +118,7 @@
       <Filter>Engine\Input</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Time.h">
-      <Filter>Engine\TextLoader\Time</Filter>
+      <Filter>Engine\Time</Filter>
     </ClInclude>
     <ClInclude Include="Engine\TextLoader.h">
       <Filter>Engine\TextLoader</Filter>
@@ -131,6 +146,24 @@
     </ClInclude>
     <ClInclude Include="Game\RichardTest.h">
       <Filter>Game\Scenes\TestScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Bird.h">
+      <Filter>Game\GameClass\Bird</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Engine.h">
+      <Filter>Ultility</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\ContactListener.h">
+      <Filter>Engine\Box2D_Extend</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\RedBird.h">
+      <Filter>Game\GameClass\Bird\RedBird</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Pig.h">
+      <Filter>Game\GameClass\Pig</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\NormalPig.h">
+      <Filter>Game\GameClass\Pig\NormalPig</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -223,9 +256,6 @@
     <Filter Include="Resources\Shaders\Text">
       <UniqueIdentifier>{5d737bac-01cb-4e5e-a321-8c93b7e18625}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\TextLoader\Time">
-      <UniqueIdentifier>{c1f4ebcf-82bd-4d84-99f6-8a1667964751}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game\Scenes">
       <UniqueIdentifier>{18cc5330-cdfb-418a-ac85-322e6e2eb194}</UniqueIdentifier>
     </Filter>
@@ -237,6 +267,24 @@
     </Filter>
     <Filter Include="Game\GameClass\SpaceShip">
       <UniqueIdentifier>{65e62d63-3103-485d-a65a-45118b1ba71a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameClass\Bird">
+      <UniqueIdentifier>{4d7457b6-55d4-4144-a112-402cd795e5e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Time">
+      <UniqueIdentifier>{c1f4ebcf-82bd-4d84-99f6-8a1667964751}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Box2D_Extend">
+      <UniqueIdentifier>{4bb5c821-4096-45a6-9bd0-c825fd086355}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameClass\Bird\RedBird">
+      <UniqueIdentifier>{2d4d5e33-1e6d-420d-adfa-1241b3b03cdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameClass\Pig">
+      <UniqueIdentifier>{7b230963-552c-41f6-a41e-95fc09dfd5a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameClass\Pig\NormalPig">
+      <UniqueIdentifier>{6b769806-6cda-4b5b-a89c-e4074b2be75b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

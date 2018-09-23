@@ -1,34 +1,20 @@
-// This Include
-#include "Scene.h"
 
-// Local Include
-#include "GameObject.h"
-#include "SpriteRender.h"
-#include "RigidBody2D.h"
-#include "Debug.h"
-#include "Camera.h"
-//#include "Player.h"
-//#include "PowerUps.h"
-//#include "AssetMgr.h"
-//#include "MeshMgr.h"
-//#include "ModelMgr.h"
-//#include "SceneMgr.h"
-//#include "Input.h"
-//#include "CAIMgr.h"
-//#include "CubeMap.h"
-//#include "TextLabel.h"
+// Engine Include
+#include "Engine.h"
 
 CScene::CScene()
 {
 	m_mainCamera = nullptr;
 	m_cubemap = nullptr;
 	m_gravity = b2Vec2(0.0f, -9.81f);
-	m_box2DWorld = new b2World(b2Vec2(0.0f, 0.0f));
+	m_box2DWorld = new b2World(m_gravity);
+	m_contactListener = new CContactListener();
+	m_box2DWorld->SetContactListener(m_contactListener);
 }
 
 CScene::~CScene()
 {
-	std::cout << "Cleaning Scene... \n";
+	CDebug::Log("Cleaning Scene: " + this->m_sceneName);
 	// Clean up the memory allocated variables inside the class
 	// ========================================================
 	delete m_mainCamera;
@@ -41,9 +27,10 @@ CScene::~CScene()
 	m_vGameObj.clear();
 
 	delete m_box2DWorld;
+	delete m_contactListener;
 
 	// ========================================================
-	std::cout << "Cleaning Done... \n";
+	CDebug::Log("Cleaning Done...");
 }
 
 void CScene::ConfigurateScene() 
@@ -73,7 +60,7 @@ void CScene::RenderScene()
 				= gameObject->GetComponent<CSpriteRender>())
 			{
 				spriteRenderer->Render(m_mainCamera);
-				//continue;
+				continue;
 			}
 		}
 	}
@@ -97,18 +84,19 @@ void CScene::ResetScene()
 
 void CScene::UpdateScene(float _tick)
 {
+	// Delete the object that should be deleted fron last frame
+	for (auto obj : m_vGameObj)
+	{
+		if (obj->ShouldDestroyed()) { DestroyObject(obj); }
+	}
+
+	// Box2D Step
 	float32 timeStep = 1.0f / 60.0f;
 	int32 velocityIterations = 6;
 	int32 positionIterations = 2;
 	if (_tick == 0)
 	{
 		m_box2DWorld->Step(timeStep, velocityIterations, positionIterations);
-	}
-
-	// Delete the object that should be deleted fron last frame
-	for (auto obj : m_vGameObj)
-	{
-		if (obj->ShouldDestroyed()) { DestroyObject(obj); }
 	}
 
 	// Get each Object in the Scene and do their own Update Function
@@ -119,7 +107,12 @@ void CScene::UpdateScene(float _tick)
 		currVecSize = m_vGameObj.size(); // Revalidate the number of item inside the vector
 	}
 
-	//CheckCollision();
+	// Do the LateUpdate function after all the normal update has been done
+	for (size_t index = 0; index < currVecSize; ++index)
+	{
+		m_vGameObj[index]->LateUpdate(_tick);
+		currVecSize = m_vGameObj.size(); // Revalidate the number of item inside the vector
+	}
 }
 
 /* Legacy code */
@@ -161,15 +154,15 @@ void CScene::UpdateScene(float _tick)
 
 void CScene::Instantiate(CGameObject * _gameobj)
 {
-	_gameobj->BeginPlay();
 	m_vGameObj.push_back(_gameobj);
+	_gameobj->BeginPlay();
 }
 
 void CScene::Instantiate(CGameObject * _gameobj, glm::vec3 _pos)
 {
-	_gameobj->BeginPlay();
-	_gameobj->m_transform.position = _pos;
 	m_vGameObj.push_back(_gameobj);
+	_gameobj->m_transform.position = _pos;
+	_gameobj->BeginPlay();
 }
 
 void CScene::Instantiate(CGameObject * _gameobj, 
@@ -177,11 +170,11 @@ void CScene::Instantiate(CGameObject * _gameobj,
 	glm::vec3 _rotation, 
 	glm::vec3 _scale = glm::vec3(1.0f, 1.0f, 1.0f))
 {
-	_gameobj->BeginPlay();
+	m_vGameObj.push_back(_gameobj);
 	_gameobj->m_transform.position = _pos;
 	_gameobj->m_transform.rotation = _rotation;
 	_gameobj->m_transform.scale = _scale;
-	m_vGameObj.push_back(_gameobj);
+	_gameobj->BeginPlay();
 }
 
 void CScene::DestroyObject(CGameObject* _gameobj)

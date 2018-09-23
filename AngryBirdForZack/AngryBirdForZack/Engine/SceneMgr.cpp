@@ -1,10 +1,9 @@
 
-// This Include
-#include "SceneMgr.h"
+// Engine Include
+#include "Engine.h"
 
-// Local Include
-#include "Scene.h"
-#include "Debug.h"
+// Scene Include
+#include "Game/RichardTest.h"
 
 #pragma region Singleton
 
@@ -32,7 +31,7 @@ void CSceneMgr::DestroyInstance()
 void CSceneMgr::InitializeScenes()
 {
 	/** Create scenes that is going to build in the game */
-	
+	CreateNewScene("TestScene", new CRichardTest());
 	
 	/** Run the first scene */
 	if (!m_scenes.empty())

@@ -11,6 +11,8 @@
 #include <fmod.hpp>
 #include <Box2D.h>
 #include <glm/common.hpp>
+#include <ft2build.h>
+#include FT_FREETYPE_H
 
 // Library Include -----------------------------------------------------------------------------
 #include <iostream>
@@ -27,7 +29,6 @@
 
 //#include <vld.h> // Memory Leak Detector
 
-
 //----------------------------------------------------------------------------------------------
 
 namespace util
@@ -35,7 +36,21 @@ namespace util
 	// Define the screen size
 	static int SCR_WIDTH = 1366;
 	static int SCR_HEIGHT = 768;
-	static int PIXELUNIT = 40;
+
+	// Define the Pixel Per Unit
+	static int PIXELUNIT = 50;
+
+	// Useful Functions
+	static float ToRad(float _degree)
+	{
+		return (_degree / 180) * b2_pi;
+	}
+
+	static float ToDeg(float _radian)
+	{
+		return _radian * (180 / b2_pi);
+	}
+
 }
 
 // Define Struct -------------------------------------------------------------------------------
@@ -65,7 +80,7 @@ struct DebugTimer
 struct Transform
 {
 	glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f);
-	glm::vec3 direction = glm::vec3(0.0f, 0.0f, 0.0f);
+	//glm::vec3 direction = glm::vec3(0.0f, 0.0f, 0.0f);
 	glm::vec3 rotation = glm::vec3(0.0f, 0.0f, 0.0f);
 	glm::vec3 scale = glm::vec3(1.0f, 1.0f, 1.0f);
 };

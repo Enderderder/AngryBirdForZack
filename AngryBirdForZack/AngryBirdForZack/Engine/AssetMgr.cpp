@@ -1,11 +1,6 @@
 
-// This Include
-#include "AssetMgr.h"
-
 // Engine Include
-#include "ShaderLoader.h"
-#include "Sprite.h"
-#include "Debug.h"
+#include "Engine.h"
 
 // Static Variable
 CAssetMgr* CAssetMgr::s_pAssetMgr = nullptr;
@@ -36,6 +31,9 @@ void CAssetMgr::InitializeAssets()
 
 	/** Initialize Sprites */
 	CreateSprite("DefaultSprite", "Resources/Sprites/DefaultSprite.png");
+	CreateSprite("RedBird_Normal", "Resources/Sprites/Birds/RedBird_Normal.png");
+	CreateSprite("Pig_Normal", "Resources/Sprites/Pigs/Pig_Normal.png");
+
 	CreateSprite("Triangle", "Resources/Sprites/Player2.png");
 	CreateSprite("Block", "Resources/Sprites/Block.png");
 	CreateSprite("Player", "Resources/Sprites/spaceship.png");

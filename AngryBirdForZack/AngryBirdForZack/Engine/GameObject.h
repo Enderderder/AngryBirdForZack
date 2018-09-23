@@ -8,8 +8,6 @@
 class CGameObject;
 class CComponent;
 
-// Declare a Transform struct
-
 class CGameObject
 {
 public:
@@ -38,6 +36,24 @@ public:
 	 * Call every frame
 	 */
 	virtual void Update(float _tick);
+	/*
+	* Call every frame after the Update of all the objects
+	*/
+	virtual void LateUpdate(float _tick);
+	/*
+	* Call when the Collision happens
+	*/
+	virtual void OnCollisionEnter(CGameObject* _other);
+	/*
+	* Call when the Collision ends
+	*/
+	virtual void OnCollisionEnd(CGameObject* _other);
+
+	/**
+	* Creates a component and push to the vector
+	*/
+	template<typename T>
+	T* CreateComponent();
 	/**
 	* Try get the component of the gameobject
 	*/
@@ -60,24 +76,15 @@ public:
 	 *Set active state for a object
 	 */
 	void SetActive(bool);
-
-protected:
-	
-	/**
-	 * Creates a component and push to the vector
-	 */
-	template<typename T>
-	T* CreateComponent();
-
 };
 
 /** Template function implementation */
-
 template<typename T>
 T* CGameObject::CreateComponent()
 {
 	CComponent* newComponent = new T();
 	newComponent->SetOwner(this);
+	newComponent->Awake();
 
 	T* resultComponent = dynamic_cast<T*>(newComponent);
 
@@ -88,7 +95,6 @@ T* CGameObject::CreateComponent()
 
 	return resultComponent;
 }
-
 template<typename T>
 T* CGameObject::GetComponent() const
 {

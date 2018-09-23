@@ -1,10 +1,6 @@
-// This include
-#include "SpriteRender.h"
 
-// Local Include
-#include "GameObject.h"
-#include "Sprite.h"
-#include "AssetMgr.h"
+// Engine Include
+#include "Engine.h"
 
 CSpriteRender::CSpriteRender() 
 {

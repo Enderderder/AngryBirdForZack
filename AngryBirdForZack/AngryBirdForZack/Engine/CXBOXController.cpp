@@ -1,10 +1,6 @@
-// This Includes //
-#include "CXBOXController.h"
 
-// Engine Includes //
-#include "Input.h"
-#include "Utility.h"
-#include <iostream>
+// Engine Include
+#include "Engine.h"
 
 XBOXController::XBOXController(int playerNumber)
 {

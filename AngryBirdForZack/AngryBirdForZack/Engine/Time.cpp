@@ -1,8 +1,6 @@
-// This Include
-#include "Time.h"
 
-// Local Include
-#include "Engine/Utility.h"
+// Engine Include
+#include "Engine.h"
 
 // Static Variable
 CTime* CTime::s_pTime = nullptr;

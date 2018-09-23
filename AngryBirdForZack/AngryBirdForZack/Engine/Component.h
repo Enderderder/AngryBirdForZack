@@ -20,9 +20,11 @@ protected:
 // Membre Funciton
 public:
 
-	virtual void Update(float _tick) {}
+	virtual void Awake() {}
 	virtual void BeginPlay() {}
 	virtual void OnDestroy() {}
+	virtual void Update(float _tick) {}
+	virtual void LateUpdate(float _tick) {}
 
 	/**
 	 * Getter and setter of the "owner" property of the component

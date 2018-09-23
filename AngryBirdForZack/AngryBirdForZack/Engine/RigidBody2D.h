@@ -13,7 +13,9 @@ public:
 	~CRigiBody2D();
 
 	virtual void Update(float _tick) override;
+	virtual void LateUpdate(float _tick) override;
 	virtual void BeginPlay() override;
+	virtual void Awake() override;
 	virtual void OnDestroy() override;
 	b2Body* GetBody();
 	
@@ -41,11 +43,13 @@ private:
 	// Properties that can be set either before or after the body being declared
 	b2BodyType m_bodyType;
 	bool m_bCanRotate;
+
+
 	bool m_bHasFixture;
 	float m_density;
 	float m_friction;
 	int m_fixtureType;
 
 
-	Transform m_transform;
+	//Transform m_transform;
 };

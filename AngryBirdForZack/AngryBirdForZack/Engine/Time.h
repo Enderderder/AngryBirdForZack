@@ -1,5 +1,8 @@
 #pragma once
 
+// Global Include
+#include "Utility.h"
+
 class CTime
 {
 
@@ -29,6 +32,7 @@ private:
 	float oldTime, newTime;
 	float deltaTimeTick;
 	float TickTime;
+
 public:
 
 	void Initialize();
