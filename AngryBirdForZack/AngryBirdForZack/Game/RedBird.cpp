@@ -45,8 +45,6 @@ void CRedBird::BeginPlay()
 
 	// Set the scale down
 	m_transform.scale = glm::vec3(0.2f, 0.2f, 1.0f);
-
-	//m_rigidBody->GetBody()->m_mass = 1.0f;
 }
 
 void CRedBird::OnCollisionEnter(CGameObject* _other)
@@ -59,10 +57,5 @@ void CRedBird::Update(float _tick)
 {
 	__super::Update(_tick);
 
-	b2Vec2 position = m_rigidBody->GetBody()->GetTransform().p;
-	float x = position.x;
-	float y = position.y;
-
-	std::cout << "Transform: " << x << ", " << y << "\n";
-	//m_rigidBody->GetBody()->GetTransform();
+	
 }

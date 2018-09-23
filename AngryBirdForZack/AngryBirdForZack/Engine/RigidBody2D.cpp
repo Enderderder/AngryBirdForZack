@@ -4,11 +4,7 @@
 
 CRigiBody2D::CRigiBody2D() :
 	m_bodyType(b2_dynamicBody),
-	m_bCanRotate(true),
-	m_bHasFixture(true),
-	m_density(1.0f),
-	m_friction(0.1f),
-	m_fixtureType(0)
+	m_bCanRotate(true)
 {}
 
 CRigiBody2D::~CRigiBody2D()
@@ -86,16 +82,10 @@ void CRigiBody2D::CreateBody()
 
 	// At the end, Set the body component into UserData for collision listening
 	m_body->SetUserData(this);
-
-	/// ====================================================================================
-	// Define another box shape for our dynamic body
-	//b2PolygonShape dynamicBox;
-
-	//b2FixtureDef fixtureDef;
-
-	/// ====================================================================================
 }
 
+/// Forbiden code
+/*
 void CRigiBody2D::CreateBody(b2World* _world, b2BodyType BodyType, bool bCanRotate, bool bHasFixture, float Density, float Friction, int fixtureType)
 {
 	//m_transform.position = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -149,6 +139,7 @@ void CRigiBody2D::CreateBody(b2World* _world, b2BodyType BodyType, bool bCanRota
 		}
 	}
 }
+*/
 
 void CRigiBody2D::SetBodyType(b2BodyType _bodyType)
 {
@@ -178,6 +169,8 @@ bool CRigiBody2D::GetCanRotate() const
 	return m_bCanRotate;
 }
 
+/// Legacy Code
+/*
 void CRigiBody2D::SetHasFixture(bool _b)
 {
 	m_bHasFixture = _b;
@@ -193,8 +186,8 @@ void CRigiBody2D::SetHasFixture(bool _b)
 		}
 	}
 }
-
 bool CRigiBody2D::GetHasFixture() const
 {
 	return m_bHasFixture;
 }
+*/
