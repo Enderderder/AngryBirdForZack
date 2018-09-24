@@ -67,9 +67,6 @@
     <ClCompile Include="Game\Bird.cpp">
       <Filter>Game\GameClass\Bird</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\ContactListener.cpp">
-      <Filter>Engine\Box2D_Extend</Filter>
-    </ClCompile>
     <ClCompile Include="Game\RedBird.cpp">
       <Filter>Game\GameClass\Bird\RedBird</Filter>
     </ClCompile>
@@ -78,6 +75,9 @@
     </ClCompile>
     <ClCompile Include="Game\NormalPig.cpp">
       <Filter>Game\GameClass\Pig\NormalPig</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\ContactListener.cpp">
+      <Filter>Engine\Box2D_Extend\ContactListener</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -153,9 +153,6 @@
     <ClInclude Include="Engine\Engine.h">
       <Filter>Ultility</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\ContactListener.h">
-      <Filter>Engine\Box2D_Extend</Filter>
-    </ClInclude>
     <ClInclude Include="Game\RedBird.h">
       <Filter>Game\GameClass\Bird\RedBird</Filter>
     </ClInclude>
@@ -164,6 +161,9 @@
     </ClInclude>
     <ClInclude Include="Game\NormalPig.h">
       <Filter>Game\GameClass\Pig\NormalPig</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\ContactListener.h">
+      <Filter>Engine\Box2D_Extend\ContactListener</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -285,6 +285,9 @@
     </Filter>
     <Filter Include="Game\GameClass\Pig\NormalPig">
       <UniqueIdentifier>{6b769806-6cda-4b5b-a89c-e4074b2be75b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Box2D_Extend\ContactListener">
+      <UniqueIdentifier>{a493ac36-c02e-4bfd-b5c7-6ff7444cdc58}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

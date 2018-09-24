@@ -52,6 +52,8 @@ void CRedBird::OnCollisionEnter(CGameObject* _other)
 {
 	__super::OnCollisionEnter(_other);
 	
+	_other->DestroyObject();
+
 }
 
 void CRedBird::Update(float _tick)

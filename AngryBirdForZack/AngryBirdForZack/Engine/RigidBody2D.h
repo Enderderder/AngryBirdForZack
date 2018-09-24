@@ -9,7 +9,7 @@ class CRigidBody2D : public CComponent
 public:
 
 	CRigidBody2D();
-	~CRigidBody2D();
+	virtual ~CRigidBody2D();
 
 	virtual void Update(float _tick) override;
 	virtual void LateUpdate(float _tick) override;

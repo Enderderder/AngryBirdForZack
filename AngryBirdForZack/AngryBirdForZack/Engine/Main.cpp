@@ -1,5 +1,3 @@
-// Global Include
-#include "Utility.h"
 
 // Engine Include
 #include "Engine.h"
@@ -10,6 +8,7 @@ static CInput* p_InputMgr = CInput::GetInstance();
 static CSceneMgr* p_SceneMgr = CSceneMgr::GetInstance();
 static CAssetMgr* p_AssetMgr = CAssetMgr::GetInstance();
 
+// OpenGL Main Functions
 void InititializeProgram();
 void Render();
 void Update();
@@ -72,8 +71,6 @@ void Render()
 	glClearColor(0.0, 1.0, 0.0, 1.0); // Make the background color GREEN
 	p_SceneMgr->RenderCurrentScene();
 
-	//g_FPSLabel->RenderTextLabel();
-
 	glutSwapBuffers();
 }
 
@@ -82,7 +79,7 @@ void Update()
 	p_Time->Update();
 
 	// Update whats currently running
-	CInput::GetInstance()->Update(p_Time->GetTick());
+	p_InputMgr->Update(p_Time->GetTick());
 	p_SceneMgr->UpdateCurrentScene(p_Time->GetTick());
 
 	// Full Screen Control

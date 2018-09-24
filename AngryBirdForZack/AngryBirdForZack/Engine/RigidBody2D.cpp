@@ -41,7 +41,7 @@ void CRigidBody2D::LateUpdate(float _tick)
 
 		// Convert glmVec3 to b2Vec2
 		b2Vec2 bodyPosition = b2Vec2(objTransform.position.x, objTransform.position.y);
-		float32 bodyRotation = (float32)objTransform.rotation.z;
+		float32 bodyRotation = (float32)util::ToRad(objTransform.rotation.z);
 
 		// Set the body to the position and rotation
 		m_body->SetTransform(bodyPosition, bodyRotation);

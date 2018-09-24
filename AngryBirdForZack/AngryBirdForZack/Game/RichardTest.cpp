@@ -16,6 +16,8 @@ CRichardTest::~CRichardTest()
 
 void CRichardTest::ConfigurateScene()
 {
+	__super::ConfigurateScene();
+
 	// Configure Camera
 	m_mainCamera = new CCamera();
 
@@ -29,13 +31,13 @@ void CRichardTest::ConfigurateScene()
 
 #pragma endregion Object: RedBird
 	
-#pragma region Ground
+#pragma region Object: Ground
 
 	CGameObject* ground = new CGameObject();
 	m_vGameObj.push_back(ground);
 	ground->m_name = "Ground";
 	ground->m_tag = Tag::Ground;
-	ground->m_transform.position = glm::vec3(0.0f, -5.0f, 0.0f);
+	ground->m_transform.position = glm::vec3(2.0f, -6.0f, 0.0f);
 	ground->m_transform.scale = glm::vec3(1.0f, 1.0f, 1.0f);
 	// Create Sprite Renderer
 	CSpriteRender* spriteRender = ground->CreateComponent<CSpriteRender>();
@@ -60,7 +62,7 @@ void CRichardTest::ConfigurateScene()
 	// Create the fixture in the body
 	rigidBody->GetBody()->CreateFixture(&fixtureDef);
 
-#pragma endregion Ground
+#pragma endregion Object: Ground
 
 	
 
