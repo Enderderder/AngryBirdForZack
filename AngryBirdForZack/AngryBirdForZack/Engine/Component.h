@@ -10,7 +10,7 @@ class CComponent
 {
 public:
 	CComponent();
-	~CComponent();
+	virtual ~CComponent();
 
 protected:
 

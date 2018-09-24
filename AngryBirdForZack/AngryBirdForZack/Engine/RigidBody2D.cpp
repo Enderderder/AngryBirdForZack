@@ -8,8 +8,9 @@ CRigidBody2D::CRigidBody2D() :
 {}
 
 CRigidBody2D::~CRigidBody2D()
-{
-	CSceneMgr::GetInstance()->GetRunningScene()->GetWorld()->DestroyBody(m_body);
+{	
+	m_body->GetWorld()->DestroyBody(m_body);
+	//CSceneMgr::GetInstance()->GetRunningScene()->GetWorld()->DestroyBody(m_body);
 	m_body = nullptr;
 }
 

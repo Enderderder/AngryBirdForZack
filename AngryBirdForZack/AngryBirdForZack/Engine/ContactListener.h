@@ -8,7 +8,7 @@ class CContactListener : public b2ContactListener
 public:
 
 	CContactListener();
-	virtual ~CContactListener() override;
+	virtual ~CContactListener();
 
 	virtual void BeginContact(b2Contact* _contact) override;
 	virtual void EndContact(b2Contact* _contact) override;

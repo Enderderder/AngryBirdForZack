@@ -8,7 +8,7 @@ class CRedBird : public CBird
 public:
 
 	CRedBird();
-	~CRedBird();
+	virtual ~CRedBird();
 
 	/** Derived from CBird Class */
 	virtual void ActiveAbility() override;
@@ -20,5 +20,6 @@ public:
 
 private:
 
+	
 
 };

@@ -113,7 +113,7 @@ enum InputState
 
 enum InputMouse 
 { 
-	MOUSE_LEFT, 
+	MOUSE_LEFT = 0, 
 	MOUSE_MIDDLE, 
 	MOUSE_RIGHT 
 };

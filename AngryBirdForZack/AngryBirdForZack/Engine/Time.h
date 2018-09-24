@@ -31,7 +31,8 @@ private:
 	float deltaTime;
 	float oldTime, newTime;
 	float deltaTimeTick;
-	float TickTime;
+	float tickTime;
+	float timeScale;
 
 public:
 
@@ -40,5 +41,8 @@ public:
 
 	float GetDeltaTime() const;
 	float GetTick() const;
+	
+	void SetTimeScale(float _timeScale);
+	float GetTimeScale() const;
 
 };

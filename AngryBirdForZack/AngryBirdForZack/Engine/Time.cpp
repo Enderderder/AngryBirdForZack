@@ -23,8 +23,9 @@ void CTime::DestroyInstance()
 
 void CTime::Initialize()
 {
+	timeScale = 1.0f;
 	oldTime = (float)glutGet(GLUT_ELAPSED_TIME);
-	TickTime = 0.01666666f;
+	tickTime = 0.01666666f;
 	deltaTimeTick = 0.0f;
 }
 
@@ -35,7 +36,7 @@ void CTime::Update()
 
 	oldTime = newTime;
 	deltaTimeTick += deltaTime;
-	if (deltaTimeTick >= TickTime)
+	if (deltaTimeTick >= tickTime)
 	{
 		deltaTimeTick = 0.0f;
 	}
@@ -49,4 +50,14 @@ float CTime::GetDeltaTime() const
 float CTime::GetTick() const
 {
 	return deltaTimeTick;
+}
+
+void CTime::SetTimeScale(float _timeScale)
+{
+	timeScale = _timeScale;
+}
+
+float CTime::GetTimeScale() const
+{
+	return timeScale;
 }

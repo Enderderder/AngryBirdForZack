@@ -79,6 +79,9 @@
     <ClCompile Include="Engine\ContactListener.cpp">
       <Filter>Engine\Box2D_Extend\ContactListener</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\QueryCallback.cpp">
+      <Filter>Engine\Box2D_Extend\CQueryCallback</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\AssetMgr.h">
@@ -164,6 +167,9 @@
     </ClInclude>
     <ClInclude Include="Engine\ContactListener.h">
       <Filter>Engine\Box2D_Extend\ContactListener</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\QueryCallback.h">
+      <Filter>Engine\Box2D_Extend\CQueryCallback</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -288,6 +294,9 @@
     </Filter>
     <Filter Include="Engine\Box2D_Extend\ContactListener">
       <UniqueIdentifier>{a493ac36-c02e-4bfd-b5c7-6ff7444cdc58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Box2D_Extend\CQueryCallback">
+      <UniqueIdentifier>{50853f71-11b3-4e1d-a674-be891fd45564}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

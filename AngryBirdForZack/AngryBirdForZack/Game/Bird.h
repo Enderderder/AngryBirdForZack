@@ -11,7 +11,7 @@ class CBird : public CGameObject
 {
 public:
 	CBird();
-	~CBird();
+	virtual ~CBird();
 
 	virtual void BeginPlay() override;
 	virtual void Update(float _tick) override;
@@ -24,9 +24,17 @@ public:
 	 */
 	virtual void ActiveAbility() = 0;
 
+	/**
+	 * Process the input of the bird or not
+	 */
+	void ProcessBird();
+	void UnProcessBird();
+
 protected:
 
 	/** Components */
 	CSpriteRender* m_spriteRender;
 	CRigidBody2D* m_rigidBody;
+
+	bool m_isProcessing;
 };

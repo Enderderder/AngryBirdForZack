@@ -40,6 +40,8 @@ void CScene::ConfigurateScene()
 
 void CScene::BeginPlay()
 {
+	CDebug::Log("Scene " + m_sceneName + " Loaded.");
+
 	for (auto obj : m_vGameObj)
 	{
 		obj->BeginPlay();
@@ -97,6 +99,33 @@ void CScene::UpdateScene(float _tick)
 	if (_tick == 0)
 	{
 		m_box2DWorld->Step(timeStep, velocityIterations, positionIterations);
+	}
+
+	// Query the world when the mouse click
+	if (CInput::GetInstance()->g_cMouseState[0] == INPUT_FIRST_PRESS)
+	{
+		// Define the query result
+		CQueryCallback queryCallback;
+
+		// Get the mouse position in the world as a 2D plane
+		b2Vec2 mousePosition = CInput::GetInstance()->g_mousePosition;
+		b2Vec2 mouseWorldPosition = ConvertToWorldPosition(mousePosition);
+
+		// Create the query position in the world
+		b2AABB aabb;
+		aabb.upperBound = b2Vec2(mouseWorldPosition.x - 0.001f, mouseWorldPosition.y - 0.001f);
+		aabb.lowerBound = b2Vec2(mouseWorldPosition.x + 0.001f, mouseWorldPosition.y + 0.001f);
+
+		// Call the query
+		m_box2DWorld->QueryAABB(&queryCallback, aabb);
+
+		// 
+		for (auto body : queryCallback.m_vFoundedBodies)
+		{
+			CRigidBody2D* rigidBodyComponent = 
+				static_cast<CRigidBody2D*>(body->GetUserData());
+			rigidBodyComponent->GetOwner()->OnMouseDown();
+		}
 	}
 
 	// Get each Object in the Scene and do their own Update Function
@@ -195,7 +224,43 @@ b2World* CScene::GetWorld() const
 	return m_box2DWorld;
 }
 
+CCamera* CScene::GetMainCamera() const
+{
+	return m_mainCamera;
+}
+
 std::vector<CGameObject*> CScene::GetObjectVec() const
 {
 	return m_vGameObj;
+}
+
+b2Vec2 CScene::ConvertToWorldPosition(b2Vec2 _position)
+{
+	// Define the result vector
+	b2Vec2 resultVector;
+
+	// Get the unit size of mouse position
+	b2Vec2 mousePosition = _position;
+	mousePosition *= (1 / (float32)util::PIXELUNIT);
+
+	// Get the screen size in unit
+	b2Vec2 ScreenUnitSize =
+		b2Vec2((float32)util::SCR_WIDTH, (float32)util::SCR_HEIGHT);
+	ScreenUnitSize *= (1 / (float32)util::PIXELUNIT);
+
+	// Calculate the offset
+	float32 XOffset = ScreenUnitSize.x / (float32)2.0f;
+	float32 YOffset = ScreenUnitSize.y / (float32)2.0f;
+
+	// Put the screen offset on to convert between OpenGL coord and Box2D coord
+	resultVector.x = mousePosition.x - XOffset;
+	resultVector.y = -(mousePosition.y - YOffset);
+
+	// Calculate the camear offset
+	glm::vec3 cameraPosition = m_mainCamera->GetCameraPosition();
+	resultVector.x += (float32)cameraPosition.x;
+	resultVector.y += (float32)cameraPosition.y;
+
+	// Return the result
+	return resultVector;
 }

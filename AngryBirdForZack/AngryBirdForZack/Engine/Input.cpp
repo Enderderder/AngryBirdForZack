@@ -2,7 +2,6 @@
 // Engine Include
 #include "Engine.h"
 
-
 // Static Variable
 CInput* CInput::s_pInput = nullptr;
 
@@ -27,11 +26,16 @@ void CInput::DestroyInstance()
 	s_pInput = nullptr;
 }
 
+
 void CInput::InitializeInput()
 {
 	for (unsigned char i = 0; i < 255; i++)
 	{
 		g_cKeyState[i] = INPUT_RELEASED;
+	}
+	for (unsigned char i = 0; i < 3; i++)
+	{
+		g_cMouseState[i] = INPUT_RELEASED;
 	}
 
 	glutKeyboardFunc(InitKeyDown);
@@ -54,7 +58,6 @@ void CInput::Keyboard_Down(unsigned char key, int x, int y)
 	else g_cKeyState[key] = INPUT_HOLD;
 }
 
-
 void CInput::Keyboard_Up(unsigned char key, int x, int y)
 {
 	g_cKeyState[key] = INPUT_RELEASED;
@@ -62,9 +65,24 @@ void CInput::Keyboard_Up(unsigned char key, int x, int y)
 
 void CInput::Mouse(int button, int glutState, int x, int y)
 {
+	// Set the mouse position
+	g_mousePosition = b2Vec2((float32)x, (float32)y);
+
+	// If one of the button fire
 	if (button < 3)
 	{
-		g_cMouseState[button] = (glutState == GLUT_DOWN) ? INPUT_HOLD : INPUT_RELEASED;
+		if (glutState == GLUT_DOWN && g_cMouseState[button] == INPUT_RELEASED)
+		{
+			g_cMouseState[button] = INPUT_FIRST_PRESS;
+		}
+		else if (glutState == GLUT_DOWN && g_cMouseState[button] == INPUT_FIRST_PRESS)
+		{
+			g_cMouseState[button] = INPUT_HOLD;
+		}
+		else if (glutState == GLUT_UP)
+		{
+			g_cMouseState[button] = INPUT_RELEASED;
+		}
 	}
 }
 
@@ -90,5 +108,24 @@ void CInput::Update(float _tick)
 		player->Update();
 	}
 
-		
+	RefreshKeys();
 }
+
+void CInput::RefreshKeys()
+{
+	for (unsigned char i = 0; i < 255; i++)
+	{
+		if (g_cKeyState[i] == INPUT_FIRST_PRESS)
+		{
+			g_cKeyState[i] = INPUT_HOLD;
+		}
+	}
+	for (unsigned char i = 0; i < 3; i++)
+	{
+		if (g_cMouseState[i] == INPUT_FIRST_PRESS)
+		{
+			g_cMouseState[i] = INPUT_HOLD;
+		}
+	}
+}
+

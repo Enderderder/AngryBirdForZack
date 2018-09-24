@@ -12,7 +12,7 @@ class CPig : public CGameObject
 public:
 
 	CPig();
-	~CPig();
+	virtual ~CPig();
 
 	virtual void BeginPlay() override;
 	virtual void LateUpdate(float _tick) override;

@@ -29,19 +29,22 @@ public:
 	 * Call after configuration 
 	 */
 	virtual void BeginPlay();
+
 	void RenderScene();
 	void ResetScene();
-
-	//void CheckCollision();
 
 	void Instantiate(CGameObject* _gameobj);
 	void Instantiate(CGameObject* _gameobj, glm::vec3 _pos);
 	void Instantiate(CGameObject* _gameobj, glm::vec3 _pos, glm::vec3 _scale, glm::vec3 _rotation);
 	void DestroyObject(CGameObject* _gameobj);
 
+	// Public getter
 	b2World* GetWorld() const;
-
+	CCamera* GetMainCamera() const;
 	std::vector<CGameObject*> GetObjectVec() const;
+
+	// Member Function
+	b2Vec2 ConvertToWorldPosition(b2Vec2 _position);
 
 public:
 

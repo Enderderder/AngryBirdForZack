@@ -8,7 +8,7 @@ class CNormalPig : public CPig
 public:
 	
 	CNormalPig();
-	~CNormalPig();
+	virtual ~CNormalPig();
 
 	virtual void BeginPlay() override;
 	virtual void Update(float _tick) override;

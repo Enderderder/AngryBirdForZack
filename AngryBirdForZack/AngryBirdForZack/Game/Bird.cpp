@@ -8,15 +8,7 @@
 CBird::CBird()
 {
 	m_spriteRender = CreateComponent<CSpriteRender>();
-	//m_spriteRender->SetSprite("Bird");
-
 	m_rigidBody = CreateComponent<CRigidBody2D>();
-
-	b2CircleShape circleShape;
-	//circleShape.m_radius = 
-
-	//b2FixtureDef fixtureDef;
-
 }
 
 CBird::~CBird()
@@ -25,7 +17,9 @@ CBird::~CBird()
 void CBird::BeginPlay()
 {
 	__super::BeginPlay();
-	
+
+	// Set the bird to not process so its not affect by any input
+	m_isProcessing = false;
 	
 }
 
@@ -50,3 +44,14 @@ void CBird::OnCollisionEnter(CGameObject* _other)
 
 
 }
+
+void CBird::ProcessBird()
+{
+	m_isProcessing = true;
+}
+
+void CBird::UnProcessBird()
+{
+	m_isProcessing = false;
+}
+
