@@ -10,7 +10,7 @@ CBird::CBird()
 	m_spriteRender = CreateComponent<CSpriteRender>();
 	//m_spriteRender->SetSprite("Bird");
 
-	m_rigidBody = CreateComponent<CRigiBody2D>();
+	m_rigidBody = CreateComponent<CRigidBody2D>();
 
 	b2CircleShape circleShape;
 	//circleShape.m_radius = 

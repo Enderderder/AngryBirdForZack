@@ -8,7 +8,10 @@
 CRedBird::CRedBird()
 {
 	m_name = "Red_Bird";
-	m_tag = "Bird";
+	m_tag = Tag::Bird;
+
+	// Set the scale down
+	m_transform.scale = glm::vec3(0.2f, 0.2f, 1.0f);
 
 	// Sprite and Body Component has been created inside the base class
 
@@ -18,7 +21,7 @@ CRedBird::CRedBird()
 	// Define the shape of the body
 	b2CircleShape circleShape;
 	circleShape.m_radius = 
-		m_spriteRender->GetSprite()->GetWidth() / 2.0f;
+		(m_spriteRender->GetSprite()->GetWidth() * m_transform.scale.x / 2.0f) / util::PIXELUNIT;
 
 	// Define the fixture using the shape
 	b2FixtureDef fixtureDef;
@@ -43,8 +46,6 @@ void CRedBird::BeginPlay()
 {
 	__super::BeginPlay();
 
-	// Set the scale down
-	m_transform.scale = glm::vec3(0.2f, 0.2f, 1.0f);
 }
 
 void CRedBird::OnCollisionEnter(CGameObject* _other)

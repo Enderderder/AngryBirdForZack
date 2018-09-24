@@ -5,7 +5,7 @@
 
 // Forward Declare
 class CSpriteRender;
-class CRigiBody2D;
+class CRigidBody2D;
 
 class CSpaceShip : public CGameObject
 {
@@ -18,7 +18,7 @@ public:
 	virtual void Update(float _tick) override;
 	void MovementChecks();
 	void SetIsController(bool _bIsController);
-	CRigiBody2D* Get2DBody();
+	CRigidBody2D* Get2DBody();
 	CSpriteRender* m_spriteRenderer;
 private:
 	void Movement(bool bLeft, bool bRight, bool bUp, bool bDown);
@@ -28,7 +28,7 @@ private:
 	bool bDownPressed;
 	bool bLeftPressed;
 	bool bRightPressed;
-	CRigiBody2D* m_rigidBody;
+	CRigidBody2D* m_rigidBody;
 	int m_iPlayerID;
 	bool bControllerInput;
 	float m_fCurrentRotation;

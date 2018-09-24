@@ -55,12 +55,19 @@
 CGameObject::CGameObject()
 {
 	m_name = "GameObject";
+	m_tag = Tag::Default;
 	m_ShouldDestroyed = false;
 	m_isActive = true;
 }
 
 CGameObject::~CGameObject()
-{}
+{
+	for (auto component : m_components)
+	{
+		delete component;
+		component = nullptr;
+	}
+}
 
 void CGameObject::BeginPlay() 
 {

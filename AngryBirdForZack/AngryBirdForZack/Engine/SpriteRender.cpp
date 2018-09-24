@@ -8,7 +8,10 @@ CSpriteRender::CSpriteRender()
 	m_programID = CAssetMgr::GetInstance()->GetProgramID("DefaultSpriteProgram");
 }
 
-CSpriteRender::~CSpriteRender() {}
+CSpriteRender::~CSpriteRender() 
+{
+	m_sprite = nullptr;
+}
 
 void CSpriteRender::BeginPlay()
 {

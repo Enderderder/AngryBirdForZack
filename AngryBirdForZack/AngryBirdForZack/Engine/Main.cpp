@@ -6,8 +6,9 @@
 
 // GLobal Variables
 static CTime* p_Time = CTime::GetInstance();
+static CInput* p_InputMgr = CInput::GetInstance();
 static CSceneMgr* p_SceneMgr = CSceneMgr::GetInstance();
-static CAssetMgr* p_Asset = CAssetMgr::GetInstance();
+static CAssetMgr* p_AssetMgr = CAssetMgr::GetInstance();
 
 void InititializeProgram();
 void Render();
@@ -40,15 +41,16 @@ int main(int argc, char **argv)
 	glutIdleFunc(Update);
 	glutDisplayFunc(Render);
 
+	// Clean up the memory when closing the program
 	glutCloseFunc([]() {
-		//cInputMgr->DestroyInstance();
-		//cSceneMgr->DestroyInstance();
-		//cNetworkMgr->DestroyInstance();
-		//CAssetMgr::GetInstance()->DestroyInstance();
+		p_InputMgr->DestroyInstance();
+		p_SceneMgr->DestroyInstance();
+		p_AssetMgr->DestroyInstance();
+		p_Time->DestroyInstance();
+
 		//CMeshMgr::GetInstance()->DestroyInstance();
 		//CModelMgr::GetInstance()->DestroyInstance();
-		//delete g_FPSLabel;
-	}); // Clean up the memory when closing the program
+	});
 
 	glutMainLoop(); // Must be called last
 }
@@ -56,26 +58,12 @@ int main(int argc, char **argv)
 void InititializeProgram()
 {
 	p_Time->Initialize();
-	p_Asset->InitializeAssets();
+	p_AssetMgr->InitializeAssets();
 	p_SceneMgr->InitializeScenes();
-	CInput::GetInstance()->InitializeInput();
-	//m_pSound.PlaySound();
-	//cInputMgr->InitializeInput();
-	//CAssetMgr::GetInstance()->InitializeAssets();
+	p_InputMgr->InitializeInput();
+
 	//CMeshMgr::GetInstance()->InitializeMeshes();
 	//CModelMgr::GetInstance()->InitializeModels();
-
-	//Menus Initialization
-	//MainMenuTracker = Play;
-	//GameOverTracker = Restart;
-	//MultiTracker = Host;
-
-	//FPS counter starts at 0 when programs starts up
-	//g_FPSLabel = new CTextLabel("Arial");
-	//g_FPSLabel->SetPosition(glm::vec2(1305.0f, 2.0f));
-	//g_FPSLabel->SetColor(glm::vec3(1.0f, 1.0f, 0.2f));
-
-	//cSceneMgr->InitializeSceneMgr();
 }
 
 void Render()

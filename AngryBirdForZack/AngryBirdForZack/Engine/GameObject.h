@@ -15,7 +15,7 @@ public:
 	~CGameObject();
 
 	// Properties
-	std::string m_tag;
+	Tag m_tag;
 	std::string m_name;
 	Transform m_transform;
 

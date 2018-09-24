@@ -2,64 +2,79 @@
 // Engine Include
 #include "Engine.h"
 
-CRigiBody2D::CRigiBody2D() :
+CRigidBody2D::CRigidBody2D() :
 	m_bodyType(b2_dynamicBody),
 	m_bCanRotate(true)
 {}
 
-CRigiBody2D::~CRigiBody2D()
+CRigidBody2D::~CRigidBody2D()
 {
-
+	CSceneMgr::GetInstance()->GetRunningScene()->GetWorld()->DestroyBody(m_body);
+	m_body = nullptr;
 }
 
-void CRigiBody2D::Update(float _tick)
+void CRigidBody2D::Update(float _tick)
 {
+	__super::Update(_tick);
+
 	if (m_body) // If the body is created
 	{
+		// Get the owner gameobject
+		CGameObject* owner = GetOwner();
+
 		// Sync the transform of the object with the body right after the Box2D Step
-		GetOwner()->m_transform.position =
+		owner->m_transform.position =
 			glm::vec3(m_body->GetPosition().x, m_body->GetPosition().y, m_body->GetAngle());
+		owner->m_transform.rotation =
+			glm::vec3(0.0f, 0.0f, m_body->GetAngle());
 	}
 }
 
-void CRigiBody2D::LateUpdate(float _tick)
+void CRigidBody2D::LateUpdate(float _tick)
 {
+	__super::LateUpdate(_tick);
+	
 	if (m_body) // If the body is created
 	{
-		// Get the obj posistion and rotation
-		glm::vec3 objTransform = GetOwner()->m_transform.position;
-		float objRotation = GetOwner()->m_transform.rotation.z;
+		// Get the obj Transform
+		Transform objTransform = GetOwner()->m_transform;
 
 		// Convert glmVec3 to b2Vec2
-		b2Vec2 bodyTransform = b2Vec2(objTransform.x, objTransform.y);
+		b2Vec2 bodyPosition = b2Vec2(objTransform.position.x, objTransform.position.y);
+		float32 bodyRotation = (float32)objTransform.rotation.z;
 
 		// Set the body to the position and rotation
-		m_body->SetTransform(bodyTransform, objRotation);
+		m_body->SetTransform(bodyPosition, bodyRotation);
 	}
 }
 
-void CRigiBody2D::BeginPlay()
+void CRigidBody2D::BeginPlay()
 {
+	__super::BeginPlay();
+	
 	//CreateBody();
 	//CreateBody(CSceneMgr::GetInstance()->GetRunningScene()->GetWorld(), )
 }
 
-void CRigiBody2D::Awake()
+void CRigidBody2D::Awake()
 {
+	__super::Awake();
+	
 	CreateBody();
 }
 
-void CRigiBody2D::OnDestroy()
+void CRigidBody2D::OnDestroy()
 {
-
+	__super::OnDestroy();
+	
 }
 
-b2Body* CRigiBody2D::GetBody()
+b2Body* CRigidBody2D::GetBody()
 {
 	return m_body;
 }
 
-void CRigiBody2D::CreateBody()
+void CRigidBody2D::CreateBody()
 {
 	// Define the dynamic body. We set its position and call the body factory.
 	b2BodyDef bodyDef;
@@ -84,7 +99,7 @@ void CRigiBody2D::CreateBody()
 	m_body->SetUserData(this);
 }
 
-/// Forbiden code
+/// Forbbiden code
 /*
 void CRigiBody2D::CreateBody(b2World* _world, b2BodyType BodyType, bool bCanRotate, bool bHasFixture, float Density, float Friction, int fixtureType)
 {
@@ -141,7 +156,7 @@ void CRigiBody2D::CreateBody(b2World* _world, b2BodyType BodyType, bool bCanRota
 }
 */
 
-void CRigiBody2D::SetBodyType(b2BodyType _bodyType)
+void CRigidBody2D::SetBodyType(b2BodyType _bodyType)
 {
 	m_bodyType = _bodyType;
 	if (m_body)
@@ -150,12 +165,12 @@ void CRigiBody2D::SetBodyType(b2BodyType _bodyType)
 	}
 }
 
-b2BodyType CRigiBody2D::GetBodyType() const
+b2BodyType CRigidBody2D::GetBodyType() const
 {
 	return m_bodyType;
 }
 
-void CRigiBody2D::SetCanRotate(bool _b)
+void CRigidBody2D::SetCanRotate(bool _b)
 {
 	m_bCanRotate = _b;
 	if (m_body)
@@ -164,7 +179,7 @@ void CRigiBody2D::SetCanRotate(bool _b)
 	}
 }
 
-bool CRigiBody2D::GetCanRotate() const
+bool CRigidBody2D::GetCanRotate() const
 {
 	return m_bCanRotate;
 }

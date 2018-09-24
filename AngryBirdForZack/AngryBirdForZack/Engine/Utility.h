@@ -51,6 +51,14 @@ namespace util
 		return _radian * (180 / b2_pi);
 	}
 
+	template<typename T>
+	static std::string ToString(const T& _value)
+	{
+		std::strstream theStream;
+		theStream << _value << std::ends;
+		return (theStream.str());
+	}
+
 }
 
 // Define Struct -------------------------------------------------------------------------------
@@ -85,6 +93,16 @@ struct Transform
 	glm::vec3 scale = glm::vec3(1.0f, 1.0f, 1.0f);
 };
 
+enum Tag
+{
+	Default,
+	Player,
+	UI,
+	Bird,
+	Pig,
+	Ground,
+};
+
 enum InputState 
 {
 	INPUT_FIRST_RELEASE,	// First frame of Up state 
@@ -101,13 +119,5 @@ enum InputMouse
 };
 
 //----------------------------------------------------------------------------------------------
-
-template<typename T>
-std::string ToString(const T& _value)
-{
-	std::strstream theStream;
-	theStream << _value << std::ends;
-	return (theStream.str());
-}
 
 #endif // !_UTILITY_H

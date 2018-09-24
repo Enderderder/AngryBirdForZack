@@ -5,7 +5,7 @@
 
 // Forward Declare
 class CSpriteRender;
-class CRigiBody2D;
+class CRigidBody2D;
 
 class CPig : public CGameObject
 {
@@ -26,7 +26,7 @@ protected:
 
 	/** Components */
 	CSpriteRender* m_spriteRener;
-	CRigiBody2D* m_rigidBody;
+	CRigidBody2D* m_rigidBody;
 
 	
 

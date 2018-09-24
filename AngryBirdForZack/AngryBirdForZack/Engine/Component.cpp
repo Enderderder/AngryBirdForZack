@@ -4,7 +4,10 @@
 
 CComponent::CComponent() {}
 
-CComponent::~CComponent() {}
+CComponent::~CComponent() 
+{
+	m_owner = nullptr;
+}
 
 void CComponent::SetOwner(CGameObject* _gameObject)
 {

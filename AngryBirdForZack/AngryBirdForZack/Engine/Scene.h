@@ -17,8 +17,17 @@ public:
 	CScene();
 	~CScene();
 
+	/**
+	 * Create all the gameobject and configure them here
+	 */
 	virtual void ConfigurateScene();
+	/**
+	 * Calls every frame and update all the gameobject in the scene
+	 */
 	virtual void UpdateScene(float _tick);
+	/**
+	 * Call after configuration 
+	 */
 	virtual void BeginPlay();
 	void RenderScene();
 	void ResetScene();

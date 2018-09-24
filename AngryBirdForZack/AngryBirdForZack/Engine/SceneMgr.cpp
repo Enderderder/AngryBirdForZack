@@ -93,9 +93,14 @@ CSceneMgr::CSceneMgr()
 
 CSceneMgr::~CSceneMgr()
 {
-	for (auto iter = m_scenes.begin(); iter != m_scenes.end(); ++iter)
+	// Set the running scene to null pointer
+	m_runningScene = nullptr;
+
+	// Delete all the scene
+	for (const auto &iter : m_scenes)
 	{
-		delete iter->second;
+		delete iter.second;
 	}
+	// Clear the scene map
 	m_scenes.clear();
 }

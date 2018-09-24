@@ -8,7 +8,7 @@
 CPig::CPig()
 {
 	m_spriteRener = CreateComponent<CSpriteRender>();
-	m_rigidBody = CreateComponent<CRigiBody2D>();
+	m_rigidBody = CreateComponent<CRigidBody2D>();
 }
 
 CPig::~CPig()

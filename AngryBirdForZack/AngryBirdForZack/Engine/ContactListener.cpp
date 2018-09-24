@@ -14,10 +14,10 @@ CContactListener::~CContactListener()
 void CContactListener::BeginContact(b2Contact* contact)
 {
 	// Get the component of the 2 colliding object body
-	CRigiBody2D* rigidBodyComponentA =
-		static_cast<CRigiBody2D*>(contact->GetFixtureA()->GetBody()->GetUserData());
-	CRigiBody2D* rigidBodyComponentB =
-		static_cast<CRigiBody2D*>(contact->GetFixtureB()->GetBody()->GetUserData());
+	CRigidBody2D* rigidBodyComponentA =
+		static_cast<CRigidBody2D*>(contact->GetFixtureA()->GetBody()->GetUserData());
+	CRigidBody2D* rigidBodyComponentB =
+		static_cast<CRigidBody2D*>(contact->GetFixtureB()->GetBody()->GetUserData());
 
 	// Call the OnCollisionEnter Function
 	rigidBodyComponentA->GetOwner()->OnCollisionEnter(rigidBodyComponentB->GetOwner());
@@ -27,10 +27,10 @@ void CContactListener::BeginContact(b2Contact* contact)
 void CContactListener::EndContact(b2Contact* contact)
 {
 	// Get the component of the 2 colliding object body
-	CRigiBody2D* rigidBodyComponentA =
-		static_cast<CRigiBody2D*>(contact->GetFixtureA()->GetBody()->GetUserData());
-	CRigiBody2D* rigidBodyComponentB =
-		static_cast<CRigiBody2D*>(contact->GetFixtureB()->GetBody()->GetUserData());
+	CRigidBody2D* rigidBodyComponentA =
+		static_cast<CRigidBody2D*>(contact->GetFixtureA()->GetBody()->GetUserData());
+	CRigidBody2D* rigidBodyComponentB =
+		static_cast<CRigidBody2D*>(contact->GetFixtureB()->GetBody()->GetUserData());
 
 	// Call the OnCollisionEnd Function
 	rigidBodyComponentA->GetOwner()->OnCollisionEnd(rigidBodyComponentB->GetOwner());

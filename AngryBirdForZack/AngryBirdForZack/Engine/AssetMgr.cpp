@@ -22,7 +22,20 @@ void CAssetMgr::DestroyInstance()
 }
 
 CAssetMgr::CAssetMgr() {}
-CAssetMgr::~CAssetMgr() {}
+
+CAssetMgr::~CAssetMgr() 
+{
+	// Clean all the Sprite inside the map
+	for (const auto &iter : m_spriteMap)
+	{
+		delete (iter.second);
+	}
+	// Clear the sprite map
+	m_spriteMap.clear();
+
+	// Clear the program map
+	m_programMap.clear();
+}
 
 void CAssetMgr::InitializeAssets()
 {
@@ -33,9 +46,10 @@ void CAssetMgr::InitializeAssets()
 	CreateSprite("DefaultSprite", "Resources/Sprites/DefaultSprite.png");
 	CreateSprite("RedBird_Normal", "Resources/Sprites/Birds/RedBird_Normal.png");
 	CreateSprite("Pig_Normal", "Resources/Sprites/Pigs/Pig_Normal.png");
+	CreateSprite("Ground", "Resources/Sprites/Ground/Ground.png");
 
 	CreateSprite("Triangle", "Resources/Sprites/Player2.png");
-	CreateSprite("Block", "Resources/Sprites/Block.png");
+	CreateSprite("Block", "Resources/Sprites/10Block.png");
 	CreateSprite("Player", "Resources/Sprites/spaceship.png");
 	CreateSprite("Gate", "Resources/Sprites/gate.png");
 	CreateSprite("Collectable", "Resources/Sprites/collectable.png");

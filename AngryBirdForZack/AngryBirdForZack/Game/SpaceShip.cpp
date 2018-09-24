@@ -8,7 +8,7 @@
 CSpaceShip::CSpaceShip(int playerID)
 {
 	m_spriteRenderer = CreateComponent<CSpriteRender>();
-	m_rigidBody = CreateComponent<CRigiBody2D>();
+	m_rigidBody = CreateComponent<CRigidBody2D>();
 
 	m_iPlayerID = playerID;
 	bControllerInput = false;
@@ -93,11 +93,11 @@ void CSpaceShip::SetIsController(bool _bIsController)
 	bControllerInput = _bIsController;
 }
 
-CRigiBody2D * CSpaceShip::Get2DBody()
+CRigidBody2D * CSpaceShip::Get2DBody()
 {
-	if (GetComponent<CRigiBody2D>())
+	if (GetComponent<CRigidBody2D>())
 	{
-		return GetComponent<CRigiBody2D>();
+		return GetComponent<CRigidBody2D>();
 	}
 	else
 	{
