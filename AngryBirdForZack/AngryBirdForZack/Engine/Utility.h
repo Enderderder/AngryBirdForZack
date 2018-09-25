@@ -25,6 +25,7 @@
 #include <Windows.h>
 #include <cassert>
 #include <thread>
+#include <memory>
 #include <sstream>
 
 //#include <vld.h> // Memory Leak Detector
@@ -101,6 +102,8 @@ enum Tag
 	Bird,
 	Pig,
 	Ground,
+	Plank,
+	Slingshot,
 };
 
 enum InputState 

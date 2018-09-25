@@ -93,7 +93,8 @@ void CScene::UpdateScene(float _tick)
 	}
 
 	// Box2D Step
-	float32 timeStep = 1.0f / 60.0f;
+	float32 timeStep = CTime::GetInstance()->GetDeltaTime();
+	//float32 timeStep = 1.0f / 60.0f;
 	int32 velocityIterations = 6;
 	int32 positionIterations = 2;
 	if (_tick == 0)
@@ -219,6 +220,18 @@ void CScene::DestroyObject(CGameObject* _gameobj)
 	}
 }
 
+CGameObject* CScene::Find(std::string _name) const
+{
+	for (auto object : m_vGameObj)
+	{
+		if (object->m_name == _name)
+		{
+			return object;
+		}
+	}
+	return nullptr;
+}
+
 b2World* CScene::GetWorld() const
 {
 	return m_box2DWorld;
@@ -237,24 +250,7 @@ std::vector<CGameObject*> CScene::GetObjectVec() const
 b2Vec2 CScene::ConvertToWorldPosition(b2Vec2 _position)
 {
 	// Define the result vector
-	b2Vec2 resultVector;
-
-	// Get the unit size of mouse position
-	b2Vec2 mousePosition = _position;
-	mousePosition *= (1 / (float32)util::PIXELUNIT);
-
-	// Get the screen size in unit
-	b2Vec2 ScreenUnitSize =
-		b2Vec2((float32)util::SCR_WIDTH, (float32)util::SCR_HEIGHT);
-	ScreenUnitSize *= (1 / (float32)util::PIXELUNIT);
-
-	// Calculate the offset
-	float32 XOffset = ScreenUnitSize.x / (float32)2.0f;
-	float32 YOffset = ScreenUnitSize.y / (float32)2.0f;
-
-	// Put the screen offset on to convert between OpenGL coord and Box2D coord
-	resultVector.x = mousePosition.x - XOffset;
-	resultVector.y = -(mousePosition.y - YOffset);
+	b2Vec2 resultVector = _position;
 
 	// Calculate the camear offset
 	glm::vec3 cameraPosition = m_mainCamera->GetCameraPosition();

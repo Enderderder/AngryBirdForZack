@@ -11,3 +11,7 @@
 
 // Pig Classes
 #include "NormalPig.h"
+
+// Enviroment Object Classes
+#include "Plank.h"
+#include "Slingshot.h"

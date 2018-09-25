@@ -47,6 +47,9 @@ void CAssetMgr::InitializeAssets()
 	CreateSprite("RedBird_Normal", "Resources/Sprites/Birds/RedBird_Normal.png");
 	CreateSprite("Pig_Normal", "Resources/Sprites/Pigs/Pig_Normal.png");
 	CreateSprite("Ground", "Resources/Sprites/Ground/Ground.png");
+	CreateSprite("WoodPlank", "Resources/Sprites/Planks/WoodPlank.png");
+	CreateSprite("Slingshot", "Resources/Sprites/Slingshot/Slingshot.png");
+	CreateSprite("AngryBirdBG", "Resources/Sprites/Background/AngryBirdBG.png");
 
 	CreateSprite("Triangle", "Resources/Sprites/Player2.png");
 	CreateSprite("Block", "Resources/Sprites/10Block.png");

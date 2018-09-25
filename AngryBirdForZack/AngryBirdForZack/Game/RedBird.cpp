@@ -28,7 +28,7 @@ CRedBird::CRedBird()
 	fixtureDef.shape = &circleShape;
 	fixtureDef.isSensor = false;
 	fixtureDef.density = 1.0f;
-	fixtureDef.friction = 0.1f;
+	fixtureDef.friction = 0.5f;
 
 	// Create the fixture in the body
 	m_rigidBody->GetBody()->CreateFixture(&fixtureDef);
@@ -52,7 +52,7 @@ void CRedBird::OnCollisionEnter(CGameObject* _other)
 {
 	__super::OnCollisionEnter(_other);
 	
-	
+
 
 }
 
@@ -60,5 +60,8 @@ void CRedBird::Update(float _tick)
 {
 	__super::Update(_tick);
 
-	
+	float bodyRotateRad = m_rigidBody->GetBody()->GetAngle();
+	//CDebug::Log(util::ToString(bodyRotateRad));
+
+	//float 
 }

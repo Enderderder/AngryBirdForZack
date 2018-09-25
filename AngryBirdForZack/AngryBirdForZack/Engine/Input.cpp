@@ -41,6 +41,8 @@ void CInput::InitializeInput()
 	glutKeyboardFunc(InitKeyDown);
 	glutKeyboardUpFunc(InitKeyUp);
 	glutMouseFunc(InitMouse);
+	glutMotionFunc(InitMouseMotion);
+	glutPassiveMotionFunc(InitMouseMotion);
 
 	Players.push_back(new XBOXController(1));
 	Players.push_back(new XBOXController(2));
@@ -65,9 +67,6 @@ void CInput::Keyboard_Up(unsigned char key, int x, int y)
 
 void CInput::Mouse(int button, int glutState, int x, int y)
 {
-	// Set the mouse position
-	g_mousePosition = b2Vec2((float32)x, (float32)y);
-
 	// If one of the button fire
 	if (button < 3)
 	{
@@ -86,6 +85,24 @@ void CInput::Mouse(int button, int glutState, int x, int y)
 	}
 }
 
+void CInput::MouseMotion(int x, int y)
+{
+	/// Set the mouse position
+	// Get the mouse position in unit
+	b2Vec2 mousePosition = b2Vec2((float32)x, (float32)y);;
+	mousePosition *= (1 / (float32)util::PIXELUNIT);
+	// Get the screen size in unit
+	b2Vec2 ScreenUnitSize =
+		b2Vec2((float32)util::SCR_WIDTH, (float32)util::SCR_HEIGHT);
+	ScreenUnitSize *= (1 / (float32)util::PIXELUNIT);
+	// Calculate the offset
+	float32 XOffset = ScreenUnitSize.x / (float32)2.0f;
+	float32 YOffset = ScreenUnitSize.y / (float32)2.0f;
+	// Put the screen offset on to convert between OpenGL coord and Box2D coord
+	g_mousePosition.x = mousePosition.x - XOffset;
+	g_mousePosition.y = -(mousePosition.y - YOffset);
+}
+
 void CInput::InitKeyDown(unsigned char key, int x, int y)
 {
 		CInput::GetInstance()->Keyboard_Down(key, x, y);
@@ -99,6 +116,11 @@ void CInput::InitKeyUp(unsigned char key, int x, int y)
 void CInput::InitMouse(int button, int glutState, int x, int y)
 {
 	CInput::GetInstance()->Mouse(button, glutState, x, y);
+}
+
+void CInput::InitMouseMotion(int x, int y)
+{
+	CInput::GetInstance()->MouseMotion(x, y);
 }
 
 void CInput::Update(float _tick)

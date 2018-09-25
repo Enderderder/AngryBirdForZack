@@ -82,6 +82,12 @@
     <ClCompile Include="Engine\QueryCallback.cpp">
       <Filter>Engine\Box2D_Extend\CQueryCallback</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Plank.cpp">
+      <Filter>Game\GameClass\Plank</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Slingshot.cpp">
+      <Filter>Game\GameClass\Slingshot</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\AssetMgr.h">
@@ -170,6 +176,12 @@
     </ClInclude>
     <ClInclude Include="Engine\QueryCallback.h">
       <Filter>Engine\Box2D_Extend\CQueryCallback</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Plank.h">
+      <Filter>Game\GameClass\Plank</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Slingshot.h">
+      <Filter>Game\GameClass\Slingshot</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -297,6 +309,12 @@
     </Filter>
     <Filter Include="Engine\Box2D_Extend\CQueryCallback">
       <UniqueIdentifier>{50853f71-11b3-4e1d-a674-be891fd45564}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameClass\Plank">
+      <UniqueIdentifier>{cdee47f3-2997-4208-bae7-b6c14c191ee8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameClass\Slingshot">
+      <UniqueIdentifier>{477ee8f0-8e80-43eb-a697-094bbbe4cee0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

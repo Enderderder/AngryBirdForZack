@@ -48,8 +48,10 @@
     <ClInclude Include="Game\GameClasses.h" />
     <ClInclude Include="Game\NormalPig.h" />
     <ClInclude Include="Game\Pig.h" />
+    <ClInclude Include="Game\Plank.h" />
     <ClInclude Include="Game\RedBird.h" />
     <ClInclude Include="Game\RichardTest.h" />
+    <ClInclude Include="Game\Slingshot.h" />
     <ClInclude Include="Game\SpaceShip.h" />
   </ItemGroup>
   <ItemGroup>
@@ -77,8 +79,10 @@
     <ClCompile Include="Game\Bird.cpp" />
     <ClCompile Include="Game\NormalPig.cpp" />
     <ClCompile Include="Game\Pig.cpp" />
+    <ClCompile Include="Game\Plank.cpp" />
     <ClCompile Include="Game\RedBird.cpp" />
     <ClCompile Include="Game\RichardTest.cpp" />
+    <ClCompile Include="Game\Slingshot.cpp" />
     <ClCompile Include="Game\SpaceShip.cpp" />
   </ItemGroup>
   <ItemGroup>

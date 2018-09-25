@@ -17,6 +17,7 @@ public:
 	virtual void Update(float _tick) override;
 	virtual void OnCollisionEnd(CGameObject* _other) override;
 	virtual void OnCollisionEnter(CGameObject* _other) override;
+	virtual void OnMouseDown() override;
 
 	/**
 	 * The active ability of the bird that can be use 
@@ -30,6 +31,10 @@ public:
 	void ProcessBird();
 	void UnProcessBird();
 
+public:
+
+	CGameObject* slingShot = nullptr;
+
 protected:
 
 	/** Components */
@@ -37,4 +42,13 @@ protected:
 	CRigidBody2D* m_rigidBody;
 
 	bool m_isProcessing;
+
+	bool m_isFollowingMouse;
+
+	float m_slingShotRadius;
+
+private:
+
+	void ProcessMouseDrag();
+
 };

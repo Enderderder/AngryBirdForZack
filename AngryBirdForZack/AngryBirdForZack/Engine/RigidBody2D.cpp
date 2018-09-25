@@ -9,9 +9,12 @@ CRigidBody2D::CRigidBody2D() :
 
 CRigidBody2D::~CRigidBody2D()
 {	
-	m_body->GetWorld()->DestroyBody(m_body);
-	//CSceneMgr::GetInstance()->GetRunningScene()->GetWorld()->DestroyBody(m_body);
-	m_body = nullptr;
+	// Delete the body from the world
+	if (m_body)
+	{
+		m_body->GetWorld()->DestroyBody(m_body);
+		m_body = nullptr;
+	}
 }
 
 void CRigidBody2D::Update(float _tick)
@@ -25,9 +28,11 @@ void CRigidBody2D::Update(float _tick)
 
 		// Sync the transform of the object with the body right after the Box2D Step
 		owner->m_transform.position =
-			glm::vec3(m_body->GetPosition().x, m_body->GetPosition().y, m_body->GetAngle());
+			glm::vec3(m_body->GetPosition().x, m_body->GetPosition().y, owner->m_transform.position.z);
 		owner->m_transform.rotation =
-			glm::vec3(0.0f, 0.0f, m_body->GetAngle());
+			glm::vec3(owner->m_transform.rotation.x, 
+				owner->m_transform.rotation.y, 
+				util::ToDeg(m_body->GetAngle()));
 	}
 }
 
@@ -53,14 +58,18 @@ void CRigidBody2D::BeginPlay()
 {
 	__super::BeginPlay();
 	
-	//CreateBody();
-	//CreateBody(CSceneMgr::GetInstance()->GetRunningScene()->GetWorld(), )
+	// Set the body transform to the gameobject transform at the beginning
+	Transform ownerTransform = GetOwner()->m_transform;
+	b2Vec2 position = b2Vec2(ownerTransform.position.x, ownerTransform.position.y);
+	float32 rotationDeg = (float32)ownerTransform.rotation.z;
+	m_body->SetTransform(position, util::ToRad(rotationDeg));
 }
 
 void CRigidBody2D::Awake()
 {
 	__super::Awake();
 	
+	// Create the body into the world
 	CreateBody();
 }
 
@@ -91,10 +100,14 @@ void CRigidBody2D::CreateBody()
 	m_body = CSceneMgr::GetInstance()->GetRunningScene()->GetWorld()->CreateBody(&bodyDef);
 
 	// Set the transform from the bodyDef to the body
-	m_body->SetTransform ( bodyDef.position, (util::ToRad(rootTransform.rotation.z)) );
+	m_body->SetTransform( bodyDef.position, (util::ToRad(rootTransform.rotation.z)) );
 
 	// Set if the body can be rotate or not
 	m_body->SetFixedRotation(!m_bCanRotate);
+
+	// Set the body damping
+	m_body->SetAngularDamping(0.5f);
+	m_body->SetLinearDamping(0.5f);
 
 	// At the end, Set the body component into UserData for collision listening
 	m_body->SetUserData(this);

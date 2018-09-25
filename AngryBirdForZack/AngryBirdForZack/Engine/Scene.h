@@ -38,6 +38,8 @@ public:
 	void Instantiate(CGameObject* _gameobj, glm::vec3 _pos, glm::vec3 _scale, glm::vec3 _rotation);
 	void DestroyObject(CGameObject* _gameobj);
 
+	CGameObject* Find(std::string _name) const;
+
 	// Public getter
 	b2World* GetWorld() const;
 	CCamera* GetMainCamera() const;

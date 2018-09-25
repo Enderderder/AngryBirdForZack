@@ -25,6 +25,7 @@ int main(int argc, char **argv)
 
 	glutInitWindowSize(util::SCR_WIDTH, util::SCR_HEIGHT);
 	glutCreateWindow("Angry Bird For Zack");
+	//glEnable(GL_DEPTH_TEST);
 	glEnable(GL_MULTISAMPLE);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
